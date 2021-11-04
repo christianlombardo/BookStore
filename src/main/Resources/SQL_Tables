@@ -43,3 +43,32 @@ CREATE TABLE orders_books (
     CONSTRAINT fk_order_id FOREIGN KEY (book_id) REFERENCES books (isbnNumber),
     CONSTRAINT fk_book_id FOREIGN KEY (order_id) REFERENCES orders (order_id)
 );
+
+
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("The Book of Coding", "Code Man", "non-fiction", 35.99, "The best best in learning to code.");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("The Book of Life", "Beatrice Leale", "non-fiction", 41.99, "The on details of life.");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("Happy Book", "Victor Gleam", "non-fiction", 50.55, "Living a happy life.");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("Fourth Book", "Great James", "non-fiction", 35.99, "The fourth book");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("Fifth Book", "Larry Emanes", "", 21.99, "Fifth book description.");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("Fun Book", "William Bower", "fiction", 79.99, "Fun Book description.");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("How to build a great code.", "Peter Ozmier", "non-fiction", 35.99, "Great tips and tricks on coding.");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("Fairy Tales of The Land of Imio", "Sally Hyatt", "fiction", 21.99, "Great book on fairy tale of a new land.");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("The Great Cars on the Track", "John Wuam", "fiction", 17.99, "The cars of the great race.");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("The Story of Luam", "Joeseph Yeamer", "fiction", 15.99, "The story of the land of Luam.");
+INSERT INTO books  (title, author_name, genre_name, price, description) VALUES ("Paradise Island", "Ann Peters", "fiction", 12.88, "The stories of the Paradise Island.");
+
+
+
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567890123, "The Book of Coding", "Code Man", "non-fiction", 35.99, "The best best in learning to code.");
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567890333, "The Book of Life", "Beatrice Leale", "non-fiction", 41.99, "The on details of life.");
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567890444, "Happy Book", "Victor Gleam", "non-fiction", 50.55, "Living a happy life.");
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567890543, "Fourth Book", "Great James", "non-fiction", 35.99, "The fourth book");
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567890123, "Fifth Book", "Larry Emanes", "", 21.99, "Fifth book description.");
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567890999, "Fun Book", "William Bower", "fiction", 79.99, "Fun Book description.");
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567898533, "How to build a great code.", "Peter Ozmier", "non-fiction", 35.99, "Great tips and tricks on coding.");
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567890721, "Fairy Tales of The Land of Imio", "Sally Hyatt", "fiction", 21.99, "Great book on fairy tale of a new land.");
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567896541, "The Great Cars on the Track", "John Wuam", "fiction", 17.99, "The cars of the great race.");
+INSERT INTO books  (isbnNumber, title, author_name, genre_name, price, description) VALUES (1234567891988, "The Story of Luam", "Joeseph Yeamer", "fiction", 15.99, "The story of the land of Luam.");
+
+
+
