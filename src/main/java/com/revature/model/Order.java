@@ -4,7 +4,6 @@ public class Order {
     private int orderId;
     private int userId;
     private double total;
-    private int genreId;
     private String desc;
 
     public int getOrderId() {
@@ -29,14 +28,6 @@ public class Order {
 
     public void setTotal(double total) {
         this.total = total;
-    }
-
-    public int getGenreId() {
-        return genreId;
-    }
-
-    public void setGenreId(int genreId) {
-        this.genreId = genreId;
     }
 
     public String getDesc() {
