@@ -17,3 +17,10 @@ Instruction
 2. create github repo
 3. create two branch each with team member name
 4. once done push your code and share the link
+
+
+User Object (email-PK, password);
+Book object (ISBN-PK,Title, author, Genre, price, description);
+List for cart, don't need to store it in db;
+
+
