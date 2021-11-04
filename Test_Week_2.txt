@@ -21,6 +21,5 @@ Instruction
 
 User Object (email-PK, password);
 Book object (ISBN-PK,Title, author, Genre, price, description);
-List for cart, don't need to store it in db;
 
 
