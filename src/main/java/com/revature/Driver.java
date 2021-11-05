@@ -4,11 +4,13 @@ import com.revature.dao.BookDAO;
 import com.revature.dao.OrderDAO;
 import com.revature.dao.UserDAO;
 import com.revature.model.Book;
+import com.revature.model.Order;
 import com.revature.model.User;
 import com.revature.service.BookService;
 import com.revature.service.UserService;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,13 +38,15 @@ public class Driver {
                 // 8. View cart and place the order Instruction
 
         System.out.println("Welcome back " + user.getName() + "!");
+        List<Book> cart = new ArrayList<>();
 
         boolean run = true;
         while (run) {
             System.out.println("Press 1: Show all books");
             System.out.println("Press 2: Show books genres");
             System.out.println("Press 3: Select Book");
-            System.out.println("Press 4: Logout");
+            System.out.println("Press 4: Show Cart");
+            System.out.println("Press 5: Logout");
 
             String input = scanner.next();
             System.out.println();
@@ -67,8 +71,33 @@ public class Driver {
                         // Select Book
                         System.out.println("Enter book ISBN number");
                         int isbn = scanner.nextInt();
+                        Book book = bookService.getSingleBook(isbn);
+                        System.out.println(book.getIsbnNumber() + ", " + book.getTitle() + ", " + book.getAuthor() + ", " + book.getGenre() + ", $" + book.getPrice() + ", " + book.getDesc());
+                        System.out.println("1) Add to Cart 2) Cancel");
+                        String in = scanner.next();
+                        if(in.equals("1")){
+                            cart.add(book);
+                            System.out.println("Book Added to Cart");
+                        }
                         break;
                     case 4:
+                        int i = 0;
+                        double price = 0;
+                        for(Book a : cart){
+                            i++;
+                            price += a.getPrice();
+                            System.out.println(a.getIsbnNumber() + ", " + a.getTitle() + ", " + a.getAuthor() + ", " + a.getGenre() + ", $" + a.getPrice() + ", " + a.getDesc());
+                        }
+                        System.out.println("1) Place Order 2) Back");
+                        if(scanner.next().equals("1")){
+                            Order order = new Order();
+                            order.setUsername(user.getUsername());
+                            order.setDesc("Number Of Books : " + i);
+                            order.setTotal(price);
+                            bookService.addOrder(order,cart);
+                        }
+                        break;
+                    case 5:
                         // Logout
                         run = false;
                         break;
