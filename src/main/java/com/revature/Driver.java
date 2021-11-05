@@ -74,9 +74,9 @@ public class Driver {
                         System.out.println("Select genre");
                         String genre = scanner.next();
                         List<Book> genreBookList = bookService.getBooksByGenre(genre);
-//                        for (Book book : genreBookList) {
-//                            System.out.println(book.getIsbnNumber() + ", " + book.getTitle() + ", " + book.getAuthor() + ", " + book.getGenre() + ", $" + book.getPrice() + ", " + book.getDesc());
-//                        }
+                        for (Book book : genreBookList) {
+                            System.out.println(book.getIsbnNumber() + ", " + book.getTitle() + ", " + book.getAuthor() + ", " + book.getGenre() + ", $" + book.getPrice() + ", " + book.getDesc());
+                        }
                         System.out.println();
                         break;
                     case 4:
@@ -108,6 +108,7 @@ public class Driver {
                             order.setDesc("Number Of Books : " + i);
                             order.setTotal(price);
                             bookService.addOrder(order,cart);
+                            System.out.println("Order Has Been Placed.");
                         }
                         break;
                     case 6:

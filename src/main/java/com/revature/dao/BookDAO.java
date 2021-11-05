@@ -63,15 +63,13 @@ public class BookDAO implements DAO<Book>{
 
     @Override
     public List<Book> readAllByStringField(String tablefieldname, String genre){
-        String sql = "select * from books where ? = ?";
+        String sql = "select * from books where genre_name = ?";
         Connection connection = ConnectionFactory.getConnection();
         List<Book> genres = new ArrayList<>();
 
         try{
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, tablefieldname);
-            ps.setString(2, genre);
-            sql.toString();
+            ps.setString(1, genre);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Book book = new Book();
