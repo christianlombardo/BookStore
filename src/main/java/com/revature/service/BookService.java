@@ -38,6 +38,15 @@ public class BookService {
         return null;
     }
 
+    public List<Book> getBooksByGenre(String genre) {
+        List<Book> bookgenreList = this.bookDAO.readAllByStringField("genre_name", genre);
+        if (bookgenreList.size() > 0) {
+            return bookgenreList;
+        }
+
+        return null;
+    }
+
     public Book getSingleBook(int isbn) {
         Book book = new Book();
         book.setIsbnNumber(isbn);
@@ -51,5 +60,9 @@ public class BookService {
         for(Book book : cart){
             orderDAO.insertIntoJoin(book.getIsbnNumber(), order.getOrderId());
         }
+
+        System.out.println("Your order has been placed!");
+        System.out.println();
+
     }
 }

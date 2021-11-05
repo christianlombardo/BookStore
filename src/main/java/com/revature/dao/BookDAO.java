@@ -62,6 +62,35 @@ public class BookDAO implements DAO<Book>{
     }
 
     @Override
+    public List<Book> readAllByStringField(String tablefieldname, String genre){
+        String sql = "select * from books where ? = ?";
+        Connection connection = ConnectionFactory.getConnection();
+        List<Book> genres = new ArrayList<>();
+
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, tablefieldname);
+            ps.setString(2, genre);
+            sql.toString();
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Book book = new Book();
+                book.setIsbnNumber(rs.getInt(1));
+                book.setTitle(rs.getString(2));
+                book.setAuthor(rs.getString(3));
+                book.setGenre(rs.getString(4));
+                book.setPrice(rs.getDouble(5));
+                book.setDesc(rs.getString(6));
+                genres.add(book);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return genres;
+    }
+
+    @Override
     public List<Book> readAll() {
         String sql = "select * from books";
         Connection connection = ConnectionFactory.getConnection();

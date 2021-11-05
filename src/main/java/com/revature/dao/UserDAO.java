@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import com.revature.model.Book;
 import com.revature.model.User;
 import com.revature.util.ConnectionFactory;
 
@@ -65,5 +66,10 @@ public class UserDAO implements DAO<User>{
     @Override
     public boolean delete(User obj) {
         return false;
+    }
+
+    @Override
+    public List<Book> readAllByStringField(String tablefieldname, String genre) {
+        return null;
     }
 }

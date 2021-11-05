@@ -1,5 +1,7 @@
 package com.revature.dao;
 
+import com.revature.model.Book;
+
 import java.util.List;
 
 public interface DAO<T> {
@@ -13,4 +15,6 @@ public interface DAO<T> {
     T update(T obj);
 
     boolean delete(T obj);
+
+    public List<Book> readAllByStringField(String tablefieldname, String name);
 }

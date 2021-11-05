@@ -70,6 +70,11 @@ public class OrderDAO implements DAO<Order> {
         return false;
     }
 
+    @Override
+    public List<Book> readAllByStringField(String tablefieldname, String genre) {
+        return null;
+    }
+
     public void insertIntoJoin(int isbnNumber, int orderId) {
         String sql = "insert into orders_books (order_id, book_id) values (?,?);";
 

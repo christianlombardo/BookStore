@@ -44,9 +44,10 @@ public class Driver {
         while (run) {
             System.out.println("Press 1: Show all books");
             System.out.println("Press 2: Show books genres");
-            System.out.println("Press 3: Select Book");
-            System.out.println("Press 4: Show Cart");
-            System.out.println("Press 5: Logout");
+            System.out.println("Press 3: Select books by genre");
+            System.out.println("Press 4: Select Book");
+            System.out.println("Press 5: Show Cart");
+            System.out.println("Press 6: Logout");
 
             String input = scanner.next();
             System.out.println();
@@ -69,6 +70,16 @@ public class Driver {
                         System.out.println();
                         break;
                     case 3:
+                        // Show all books by genre
+                        System.out.println("Select genre");
+                        String genre = scanner.next();
+                        List<Book> genreBookList = bookService.getBooksByGenre(genre);
+//                        for (Book book : genreBookList) {
+//                            System.out.println(book.getIsbnNumber() + ", " + book.getTitle() + ", " + book.getAuthor() + ", " + book.getGenre() + ", $" + book.getPrice() + ", " + book.getDesc());
+//                        }
+                        System.out.println();
+                        break;
+                    case 4:
                         // Select Book
                         System.out.println("Enter book ISBN number");
                         int isbn = scanner.nextInt();
@@ -81,7 +92,7 @@ public class Driver {
                             System.out.println("Book Added to Cart\n");
                         }
                         break;
-                    case 4:
+                    case 5:
                         int i = 0;
                         double price = 0;
                         for(Book a : cart){
@@ -89,7 +100,7 @@ public class Driver {
                             price += a.getPrice();
                             System.out.println(a.getIsbnNumber() + ", " + a.getTitle() + ", " + a.getAuthor() + ", " + a.getGenre() + ", $" + a.getPrice() + ", " + a.getDesc());
                         }
-                        System.out.println("Tottal Price: $" + price);
+                        System.out.println("Total Price: $" + price);
                         System.out.println("1) Place Order 2) Back");
                         if(scanner.next().equals("1")){
                             Order order = new Order();
@@ -99,7 +110,7 @@ public class Driver {
                             bookService.addOrder(order,cart);
                         }
                         break;
-                    case 5:
+                    case 6:
                         // Logout
                         run = false;
                         break;
