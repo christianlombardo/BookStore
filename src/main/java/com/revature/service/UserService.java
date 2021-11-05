@@ -6,7 +6,7 @@ import com.revature.model.User;
 
 public class UserService {
 
-    private UserDAO userDao;
+    private final UserDAO userDao;
 
     public UserService() {
         this.userDao = new UserDAO();
@@ -32,6 +32,7 @@ public class UserService {
         }
 
     }
+
 
 
 

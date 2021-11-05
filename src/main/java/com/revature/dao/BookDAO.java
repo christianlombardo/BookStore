@@ -19,12 +19,13 @@ public class BookDAO implements DAO<Book>{
 
     @Override
     public Book readById(Book obj) {
-        String sql = "select * from books";
+        String sql = "select * from books where isbnNumber = ?";
         Connection connection = ConnectionFactory.getConnection();
         Book book = new Book();
 
         try{
             PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,obj.getIsbnNumber());
 
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
