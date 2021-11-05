@@ -60,9 +60,5 @@ public class BookService {
         for(Book book : cart){
             orderDAO.insertIntoJoin(book.getIsbnNumber(), order.getOrderId());
         }
-
-        System.out.println("Your order has been placed!");
-        System.out.println();
-
     }
 }
