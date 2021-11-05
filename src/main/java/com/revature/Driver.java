@@ -66,6 +66,7 @@ public class Driver {
                         List<String> genreList = bookService.getAllGenres();
                         for (String genre : genreList)
                             System.out.println(genre);
+                        System.out.println();
                         break;
                     case 3:
                         // Select Book
@@ -77,7 +78,7 @@ public class Driver {
                         String in = scanner.next();
                         if(in.equals("1")){
                             cart.add(book);
-                            System.out.println("Book Added to Cart");
+                            System.out.println("Book Added to Cart\n");
                         }
                         break;
                     case 4:
@@ -200,7 +201,5 @@ public class Driver {
                 }
             }
         }
-
     }
-
 }
