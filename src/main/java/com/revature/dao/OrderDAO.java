@@ -9,19 +9,26 @@ import java.util.List;
 
 public class OrderDAO implements DAO<Order> {
     @Override
-    public void insert(Order obj) {
+    public boolean insert(Order obj) {
         String sql = "insert into orders (user_id, sum_total, description) values (?,?,?)";
 
+        int count=0;
         try {
             PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql);
 
             ps.setInt(1,obj.getUserId());
             ps.setDouble(2,obj.getTotal());
             ps.setString(3, obj.getDesc());
-            ps.execute();
+            count = ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        if (count <= 0) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override

@@ -10,18 +10,26 @@ import java.util.List;
 
 public class UserDAO implements DAO<User>{
     @Override
-    public void insert(User obj) {
+    public boolean insert(User obj) {
         String sql = "insert into users (name, username, password) values (?,?,?)";
 
+        int count=0;
         try {
             PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(sql);
             ps.setString(1, obj.getName());
             ps.setString(2, obj.getUsername());
             ps.setString(3, obj.getPassword());
-            ps.execute();
+            count = ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        if (count <= 0) {
+            return false;
+        }
+
+        return true;
+
     }
 
     @Override

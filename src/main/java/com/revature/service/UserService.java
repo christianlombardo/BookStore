@@ -12,13 +12,27 @@ public class UserService {
         this.userDao = new UserDAO();
     }
 
-    public boolean userLogin(User userLogin) {
+    public boolean userRegister(User user) {
+
+        if (this.userDao.insert(user))
+            return true;
+
+        return false;
+    }
+
+
+    public User userLogin(User userLogin) {
         User user = this.userDao.readById(userLogin);
 
-        if (userLogin.getPassword() != user.getPassword())
-            return false;
+        if (userLogin.getPassword().equals(user.getPassword())) {
+            return user;
+        }
+        else {
+            return null;
+        }
 
-        return true;
     }
+
+
 
 }

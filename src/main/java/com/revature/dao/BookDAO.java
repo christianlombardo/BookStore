@@ -12,8 +12,9 @@ import java.util.List;
 
 public class BookDAO implements DAO<Book>{
     @Override
-    public void insert(Book obj) {
+    public boolean insert(Book obj) {
 
+        return false;
     }
 
     @Override
@@ -41,7 +42,26 @@ public class BookDAO implements DAO<Book>{
         return book;
     }
 
-    public List<Book> readByGenre(){
+    public List<String> readByGenre(){
+        String sql = "select distinct genre_name from books";
+        Connection connection = ConnectionFactory.getConnection();
+        List<String> genres = new ArrayList<>();
+
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                genres.add(rs.getString(1));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return genres;
+    }
+
+    @Override
+    public List<Book> readAll() {
         String sql = "select * from books";
         Connection connection = ConnectionFactory.getConnection();
         List<Book> books = new ArrayList<>();
@@ -67,10 +87,7 @@ public class BookDAO implements DAO<Book>{
         return books;
     }
 
-    @Override
-    public List<Book> readAll() {
-        return null;
-    }
+
 
     @Override
     public Book update(Book obj) {

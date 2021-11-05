@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface DAO<T> {
 
-    void insert(T obj);
+    boolean insert(T obj);
 
     T readById(T obj);
 
