@@ -89,6 +89,7 @@ public class Driver {
                             price += a.getPrice();
                             System.out.println(a.getIsbnNumber() + ", " + a.getTitle() + ", " + a.getAuthor() + ", " + a.getGenre() + ", $" + a.getPrice() + ", " + a.getDesc());
                         }
+                        System.out.println("Tottal Price: $" + price);
                         System.out.println("1) Place Order 2) Back");
                         if(scanner.next().equals("1")){
                             Order order = new Order();
